@@ -441,13 +441,3 @@ function lm_elementor_popup_element() {
 	$LM->widgets_manager->register_widget_type( new Widget_Popup() );
 }
 
-
-//Update Script
-if( ! class_exists( 'Smashing_Updater' ) ){
-	include_once( plugin_dir_path( __FILE__ ) . 'updater.php' );
-}
-$updater = new Smashing_Updater( __FILE__ );
-$updater->set_username( 'bashari10' );
-$updater->set_repository( 'aaa-lm-elementor-popup' );
-$updater->initialize();
-
