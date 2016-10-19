@@ -17,6 +17,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 add_action( 'wp_enqueue_scripts', 'register_popup_style' );
 function register_popup_style() {
 	wp_enqueue_style( 'lm-popup', plugin_dir_url( __FILE__ ) . 'css/popup.css' );
+	
+	if ( is_rtl() ) {
+		wp_enqueue_style(
+			'lm-popup-rtl',
+			plugin_dir_url( __FILE__ ) . 'css/rtl.popup.css',
+			array ( 'lm-popup' )
+		);
+	}
+	
 	wp_enqueue_script( 'lm-popup', plugin_dir_url( __FILE__ ) . 'js/popup.js', array('jquery') );
 }
 
@@ -61,7 +70,7 @@ function lm_elementor_popup_element() {
 			return 'popup';
 		}
 		public function get_title() {
-			return __( 'Popup', 'elementor' );
+			return __( 'Popup', 'lm-popup' );
 		}
 		public function get_icon() {
 			return 'button';
@@ -437,17 +446,6 @@ function lm_elementor_popup_element() {
 		}
 	}
 
-	//$class_name = '\Widget_Popup';
 	$LM->widgets_manager->register_widget_type( new Widget_Popup() );
 }
-
-
-//Update Script
-if( ! class_exists( 'Smashing_Updater' ) ){
-	include_once( plugin_dir_path( __FILE__ ) . 'updater.php' );
-}
-$updater = new Smashing_Updater( __FILE__ );
-$updater->set_username( 'bashari10' );
-$updater->set_repository( 'aaa-lm-elementor-popup' );
-$updater->initialize();
 
