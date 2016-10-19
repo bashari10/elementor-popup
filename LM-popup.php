@@ -6,8 +6,8 @@
 * Version: 0.0.5
 * Author: Avi Bashari
 * Author URI: https://facebook.com/bashari10
-Text Domain: lm-popup
-Domain Path: /languages
+* Text Domain: lm-popup
+* Domain Path: /languages
 * License: GPLv3
 */
 
