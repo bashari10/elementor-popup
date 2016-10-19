@@ -59,6 +59,7 @@ function create_popup_post_type() {
       'rewrite' => array('slug' => 'popup'),
     )
   );
+  add_post_type_support( 'popup', 'elementor' );
 }
 
 
