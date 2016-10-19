@@ -70,7 +70,7 @@ function lm_elementor_popup_element() {
 			return 'popup';
 		}
 		public function get_title() {
-			return __( 'Popup', 'elementor' );
+			return __( 'Popup', 'lm-popup' );
 		}
 		public function get_icon() {
 			return 'button';
