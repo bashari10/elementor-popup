@@ -3,7 +3,7 @@
 /**
 * Plugin Name: Elementor Popups
 * Description: Popup element for Elementor Page Builder
-* Version: 0.0.3
+* Version: 0.0.4
 * Author: Avi Bashari
 * Author URI: https://facebook.com/bashari10
 Text Domain: lm-popup
