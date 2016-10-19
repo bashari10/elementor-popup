@@ -14,7 +14,6 @@
 
 	.modal-dialog {
 	  display: inline-block;
-	  text-align: left;
 	  vertical-align: middle;
 	}
 
@@ -26,6 +25,10 @@
 
 .modal,.modal:before, .modal-dialog, .model-body {
   z-index: 99999 !important;
+}
+
+.modal-dialog {
+	text-align: left;
 }
 
 .modal-title {
