@@ -362,7 +362,7 @@ function lm_elementor_popup_element() {
 		protected function render() {
 			$settings = $this->get_settings();
 			
-			$selectedPopup = new WP_Query( array( 'post_id' => $settings['popup'], 'post_type' => 'popup' ) );
+			$selectedPopup = new WP_Query( array( 'p' => $settings['popup'], 'post_type' => 'popup' ) );
 			if ( $selectedPopup->have_posts() ) {
 				
 				$selectedPopup->the_post();
