@@ -17,6 +17,15 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 add_action( 'wp_enqueue_scripts', 'register_popup_style' );
 function register_popup_style() {
 	wp_enqueue_style( 'lm-popup', plugin_dir_url( __FILE__ ) . 'css/popup.css' );
+	
+	if ( is_rtl() ) {
+		wp_enqueue_style(
+			'lm-popup-rtl',
+			plugin_dir_url( __FILE__ ) . 'css/rtl.popup.css',
+			array ( 'lm-popup' )
+		);
+	}
+	
 	wp_enqueue_script( 'lm-popup', plugin_dir_url( __FILE__ ) . 'js/popup.js', array('jquery') );
 }
 
