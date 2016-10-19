@@ -3,7 +3,7 @@
 /**
 * Plugin Name: Elementor Popups
 * Description: Popup element for Elementor Page Builder
-* Version: 0.0.4
+* Version: 0.0.5
 * Author: Avi Bashari
 * Author URI: https://facebook.com/bashari10
 Text Domain: lm-popup
@@ -440,4 +440,14 @@ function lm_elementor_popup_element() {
 	//$class_name = '\Widget_Popup';
 	$LM->widgets_manager->register_widget_type( new Widget_Popup() );
 }
+
+
+//Update Script
+if( ! class_exists( 'Smashing_Updater' ) ){
+	include_once( plugin_dir_path( __FILE__ ) . 'updater.php' );
+}
+$updater = new Smashing_Updater( __FILE__ );
+$updater->set_username( 'bashari10' );
+$updater->set_repository( 'aaa-lm-elementor-popup' );
+$updater->initialize();
 
