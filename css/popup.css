@@ -1,0 +1,41 @@
+@media screen and (min-width: 750px) {
+	.modal {
+	  text-align: center;
+	  padding: 0 !important;
+	}
+
+	.modal:before {
+	  content: '';
+	  display: inline-block;
+	  height: 100%;
+	  vertical-align: middle;
+	  margin-right: -4px;
+	}
+
+	.modal-dialog {
+	  display: inline-block;
+	  text-align: right;
+	  vertical-align: middle;
+	}
+
+	.model-body {
+	  overflow-y: scroll !important;
+	  overflow-x: hidden !important;
+	}
+}
+
+.modal,.modal:before, .modal-dialog, .model-body {
+  z-index: 99999 !important;
+}
+
+.modal-title {
+	text-align: center;
+}
+
+body.modal-open .elementor-widget-wrap {
+	z-index: auto;
+}
+
+.lm-popup {
+	cursor: pointer;
+}

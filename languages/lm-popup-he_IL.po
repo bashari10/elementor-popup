@@ -1,0 +1,54 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Elementor Popups\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-18 22:29+0000\n"
+"PO-Revision-Date: 2016-10-18 23:43+0000\n"
+"Last-Translator: avix <luikroizer+wp@gmail.com>\n"
+"Language-Team: Hebrew\n"
+"Language: he-IL\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#. Author URI of the plugin
+msgid "https://facebook.com/bashari10"
+msgstr "https://facebook.com/bashari10"
+
+#: LM-popup.php:36
+msgid "Popups"
+msgstr "פופאפים"
+
+#: LM-popup.php:37 LM-popup.php:105
+msgid "Popup"
+msgstr "פופאפ"
+
+#: LM-popup.php:38
+msgid "All Popups"
+msgstr "כל הפופאפים"
+
+#: LM-popup.php:39 LM-popup.php:40 LM-popup.php:41
+msgid "Add New Popup"
+msgstr "הוספת פופאפ חדש"
+
+#: LM-popup.php:42
+msgid "Edit Popup"
+msgstr "עריכת פופאפ"
+
+#: LM-popup.php:111
+msgid "Choose Popup"
+msgstr "בחר פופאפ"
+
+#. Name of the plugin
+msgid "Elementor Popups"
+msgstr "פופאפים לאלמנטור"
+
+#. Description of the plugin
+msgid "Popup element for Elementor Page Builder"
+msgstr "פופאפ לאלמנטור"
+
+#. Author of the plugin
+msgid "Avi Bashari"
+msgstr "אבי בשארי"

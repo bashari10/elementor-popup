@@ -1,0 +1,55 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-18 22:20+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: LM-popup.php:36
+msgid "Popups"
+msgstr ""
+
+#: LM-popup.php:37 LM-popup.php:105
+msgid "Popup"
+msgstr ""
+
+#: LM-popup.php:38
+msgid "All Popups"
+msgstr ""
+
+#: LM-popup.php:39 LM-popup.php:40 LM-popup.php:41
+msgid "Add New Popup"
+msgstr ""
+
+#: LM-popup.php:42
+msgid "Edit Popup"
+msgstr ""
+
+#: LM-popup.php:111
+msgid "Choose Popup"
+msgstr ""
+
+#. Name of the plugin
+msgid "Elementor Popups"
+msgstr ""
+
+#. Description of the plugin
+msgid "Popup element for Elementor Page Builder"
+msgstr ""
+
+#. Author of the plugin
+msgid "Avi Bashari"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://facebook.com/bashari10"
+msgstr ""
