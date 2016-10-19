@@ -437,7 +437,6 @@ function lm_elementor_popup_element() {
 		}
 	}
 
-	//$class_name = '\Widget_Popup';
 	$LM->widgets_manager->register_widget_type( new Widget_Popup() );
 }
 
