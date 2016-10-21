@@ -16,7 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 // Register stylesheet
 add_action( 'wp_enqueue_scripts', 'register_popup_style' );
 function register_popup_style() {
-	wp_enqueue_style( 'lm-popup', plugin_dir_url( __FILE__ ) . 'css/popup.css' );
+	wp_enqueue_style( 'bootstrap', plugin_dir_url( __FILE__ ) . 'css/bootstrap.css' );
+	wp_enqueue_style( 'lm-popup', plugin_dir_url( __FILE__ ) . 'css/popup.css', array( 'bootstrap' ) );
 	
 	if ( is_rtl() ) {
 		wp_enqueue_style(
@@ -26,7 +27,8 @@ function register_popup_style() {
 		);
 	}
 	
-	wp_enqueue_script( 'lm-popup', plugin_dir_url( __FILE__ ) . 'js/popup.js', array('jquery') );
+	wp_enqueue_script( 'bootstrap', plugin_dir_url( __FILE__ ) . 'js/bootstrap.js', array( 'jquery' ), null, true );
+	wp_enqueue_script( 'lm-popup-js', plugin_dir_url( __FILE__ ) . 'js/popup.js', array( 'jquery', 'bootstrap' ), null, true );
 }
 
 
