@@ -71,6 +71,8 @@ function create_popup_post_type() {
       ),
       'has_archive' => false,
       'rewrite' => array('slug' => 'popup'),
+	  'public' => true,
+	  'exclude_from_search' => true,
     )
   );
   add_post_type_support( 'popup', 'elementor' );
