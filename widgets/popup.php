@@ -12,7 +12,7 @@ use WP_Query;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class ElementorPopup extends Widget_Base {
-	
+
 	public function get_name() {
 		return 'popup';
 	}
@@ -43,7 +43,7 @@ class ElementorPopup extends Widget_Base {
 		if ( $popups_query->have_posts() ) {
 			$popups_array = array();
 			$popups = $popups_query->get_posts();
-			
+
 			$i = 0;
 			foreach( $popups as $popap ) {
 				$popups_array[$popap->ID] = $popap->post_title;
@@ -51,7 +51,7 @@ class ElementorPopup extends Widget_Base {
 					$selected = $popap->ID;
 				$i++;
 			}
-			
+
 			$popups = array(
 				'first_popup' => $selected,
 				'popups' => $popups_array,
@@ -320,10 +320,10 @@ class ElementorPopup extends Widget_Base {
 	}
 	protected function render() {
 		$settings = $this->get_settings();
-		
+
 		$selectedPopup = new WP_Query( array( 'p' => $settings['popup'], 'post_type' => 'popup' ) );
 		if ( $selectedPopup->have_posts() ) {
-			
+
 			$selectedPopup->the_post();
 
 			$this->add_render_attribute( 'wrapper', 'class', 'elementor-button-wrapper' );
@@ -375,7 +375,7 @@ class ElementorPopup extends Widget_Base {
 			</div>
 			<?php
 			wp_reset_postdata();
-			
+
 		}
 	}
 	protected function _content_template() {
