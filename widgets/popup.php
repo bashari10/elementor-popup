@@ -7,6 +7,7 @@ use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Border;
+use Elementor\Frontend;
 use WP_Query;
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -368,7 +369,10 @@ class ElementorPopup extends Widget_Base {
 					<h4 class="modal-title" id="popup-<?php echo $selectedPopup->post->ID; ?>-label"><?php the_title(); ?></h4>
 				  </div>
 				  <div class="modal-body">
-					<?php the_content(); ?>
+					<?php
+						$frontend = new Frontend;
+						echo $frontend->get_builder_content($selectedPopup->post->ID, true);
+					?>
 				  </div>
 				</div>
 			  </div>
