@@ -4,18 +4,24 @@
 	  padding: 0 !important;
 	}
 
-	.modal:before {
+	/*.modal:before {
 	  content: '';
 	  display: inline-block;
 	  height: 100%;
 	  vertical-align: middle;
 	  margin-right: -4px;
-	}
+	}*/
 
 	.modal-dialog {
 	  display: inline-block;
 	  vertical-align: middle;
+      width: 100%;
+      margin: 0 0;
 	}
+    
+   .modal-content {
+    padding: 0px 0px 0px 0px;
+  }
 
 	.model-body {
 	  overflow-y: scroll !important;
@@ -23,9 +29,13 @@
 	}
 }
 
-.modal,.modal:before, .modal-dialog, .model-body {
-  z-index: 99999 !important;
+.modal-body {
+    padding: 0px !important;
 }
+
+/*.modal,.modal:before, .modal-dialog, .model-body {
+  z-index: 99999 !important;
+}*/
 
 .modal-dialog {
 	text-align: left;
@@ -41,4 +51,8 @@ body.modal-open .elementor-widget-wrap {
 
 .lm-popup {
 	cursor: pointer;
+}
+
+.modal.fade.in {
+	background: rgba(0,0,0,0.6);
 }

@@ -43,10 +43,12 @@
 }
 button.close {
   -webkit-appearance: none;
-  padding: 0;
+  padding: 5px;
   cursor: pointer;
   background: transparent;
   border: 0;
+    position: inherit;
+    z-index: 999999999;
 }
 .modal-open {
   overflow: hidden;
@@ -84,11 +86,11 @@ button.close {
 }
 .modal-dialog {
   position: relative;
-  width: auto;
   margin: 10px;
 }
 .modal-content {
   position: relative;
+    margin: 0 auto;
   background-color: #fff;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
@@ -129,7 +131,7 @@ button.close {
 }
 .modal-body {
   position: relative;
-  padding: 15px;
+  /*padding: 15px;*/
 }
 .modal-footer {
   padding: 15px;
@@ -155,7 +157,6 @@ button.close {
 }
 @media (min-width: 768px) {
   .modal-dialog {
-    width: 600px;
     margin: 30px auto;
   }
   .modal-content {

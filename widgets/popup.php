@@ -7,12 +7,15 @@ use Elementor\Group_Control_Typography;
 use Elementor\Scheme_Typography;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Background;
+use Elementor\Frontend;
 use WP_Query;
+
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 class ElementorPopup extends Widget_Base {
-
+	
 	public function get_name() {
 		return 'popup';
 	}
@@ -43,7 +46,7 @@ class ElementorPopup extends Widget_Base {
 		if ( $popups_query->have_posts() ) {
 			$popups_array = array();
 			$popups = $popups_query->get_posts();
-
+			
 			$i = 0;
 			foreach( $popups as $popap ) {
 				$popups_array[$popap->ID] = $popap->post_title;
@@ -51,7 +54,7 @@ class ElementorPopup extends Widget_Base {
 					$selected = $popap->ID;
 				$i++;
 			}
-
+			
 			$popups = array(
 				'first_popup' => $selected,
 				'popups' => $popups_array,
@@ -317,13 +320,150 @@ class ElementorPopup extends Widget_Base {
 			]
 		);
 		$this->end_controls_section();
+        
+        
+        /****************************************
+        *********** ADD MODAL CONTROLS **********
+        ****************************************/
+     $this->start_controls_section(
+			'modalstyle',
+			[
+				'label' => __( 'Modal Container', 'elementor' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_group_control(
+		Group_Control_Background::get_type(),
+			[
+				'name' => 'modal_bgcolor',
+				'types' => [ 'classic', 'gradient' ],
+				'default' => 'rgba(0,0,0,0.7)',
+				'selector' => '{{WRAPPER}} .modal',
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'modalcontentstyle',
+			[
+				'label' => __( 'Modal Content', 'elementor' ),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_responsive_control(
+				'modal_content_width',
+				[
+						'label' => __( 'Modal Width', 'elementor' ),
+						'type' => Controls_Manager::SLIDER,
+						'default' => [
+								'size' => 60,
+								'unit' => '%',
+						],
+						'range' => [
+								'px' => [
+										'min' => 0,
+										'max' => 1920,
+										'step' => 1,
+								],
+								'%' => [
+										'min' => 25,
+										'max' => 100,
+								],
+						],
+						'size_units' => [ '%', 'px' ],
+						'selectors' => [
+								'{{WRAPPER}} .modal-content' => 'width: {{SIZE}}{{UNIT}} !important;',
+						],
+				]
+		);
+		
+				$this->add_responsive_control(
+				'modal_content_max_width',
+				[
+						'label' => __( 'Modal Max-Width', 'elementor' ),
+						'type' => Controls_Manager::SLIDER,
+						'default' => [
+								'size' => 720,
+								'unit' => 'px',
+						],
+						'range' => [
+								'px' => [
+										'min' => 0,
+										'max' => 1920,
+										'step' => 1,
+								],
+								'%' => [
+										'min' => 5,
+										'max' => 100,
+								],
+						],
+						'size_units' => [ '%', 'px' ],
+						'selectors' => [
+								'{{WRAPPER}} .modal-content' => 'max-width: {{SIZE}}{{UNIT}} !important;',
+						],
+				]
+		);
+
+		$this->add_responsive_control(
+				'modal_content_top',
+				[
+						'label' => __( 'Top Distance', 'elementor' ),
+						'type' => Controls_Manager::SLIDER,
+						'default' => [
+								'size' => 5,
+								'unit' => '%',
+						],
+						'range' => [
+								'px' => [
+										'min' => 0,
+										'max' => 1000,
+										'step' => 1,
+								],
+								'%' => [
+										'min' => 0,
+										'max' => 100,
+								],
+						],
+						'size_units' => [ '%', 'px' ],
+						'selectors' => [
+								'{{WRAPPER}} .modal-content' => 'margin-top: {{SIZE}}{{UNIT}};',
+						],
+				]
+		);
+
+		$this->add_responsive_control(
+				'modal_content_padding',
+				[
+						'label' => __( 'Padding', 'elementor' ),
+						'type' => Controls_Manager::DIMENSIONS,
+						'size_units' => [ 'px', '%', 'em' ],
+						'default' => [
+								'top' => 0,
+								'left' => 0,
+								'right' => 0,
+								'bottom' => 0,
+						],
+						'selectors' => [
+								'{{WRAPPER}} .modal-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						],
+				]
+		);
+
+		$this->end_controls_section();
+        
+        /* END NEW MODAL CONTROLS */
+        
+        
 	}
 	protected function render() {
 		$settings = $this->get_settings();
-
+		
 		$selectedPopup = new WP_Query( array( 'p' => $settings['popup'], 'post_type' => 'popup' ) );
 		if ( $selectedPopup->have_posts() ) {
-
+			
 			$selectedPopup->the_post();
 
 			$this->add_render_attribute( 'wrapper', 'class', 'elementor-button-wrapper' );
@@ -363,19 +503,19 @@ class ElementorPopup extends Widget_Base {
 			<div class="modal fade" id="popup-<?php echo $selectedPopup->post->ID; ?>" tabindex="-1" role="dialog" aria-labelledby="popup-<?php echo $selectedPopup->post->ID; ?>-label">
 			  <div class="modal-dialog" role="document">
 				<div class="modal-content">
-				  <div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="popup-<?php echo $selectedPopup->post->ID; ?>-label"><?php the_title(); ?></h4>
-				  </div>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				  <div class="modal-body">
-					<?php the_content(); ?>
+					<?php
+						$frontend = new Frontend;
+						echo $frontend->get_builder_content($selectedPopup->post->ID, true);
+					?>
 				  </div>
 				</div>
 			  </div>
 			</div>
 			<?php
 			wp_reset_postdata();
-
+			
 		}
 	}
 	protected function _content_template() {
