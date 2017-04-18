@@ -37,6 +37,8 @@
   z-index: 99999 !important;
 }*/
 
+body{padding:0 !important}
+
 .modal-dialog {
 	text-align: left;
 }

@@ -78,6 +78,22 @@ class ElementorPopup extends Widget_Base {
 				'options' => $this->get_popups()['popups'],
 			]
 		);
+        $this->add_control(
+			'PopUp Tittle',
+			[
+				'label' => __( 'Popup Title', 'lm-popup' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_off' => __( 'Hide', 'lm-popup' ),
+				'label_on' => __( 'Show', 'lm-popup' ),
+				'default' => 'yes',
+            
+			
+            'selectors' => [
+					'{{WRAPPER}} .modal-header' => 'display: inherit;',
+                ],
+            ]
+		);
+        
 		$this->end_controls_section();
 		$this->start_controls_section(
 			'section_button',
@@ -503,7 +519,10 @@ class ElementorPopup extends Widget_Base {
 			<div class="modal fade" id="popup-<?php echo $selectedPopup->post->ID; ?>" tabindex="-1" role="dialog" aria-labelledby="popup-<?php echo $selectedPopup->post->ID; ?>-label">
 			  <div class="modal-dialog" role="document">
 				<div class="modal-content">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  <div class="modal-header">
+                        <h4 class="modal-title" id="popup-<?php echo $selectedPopup->post->ID; ?>-label"><?php the_title(); ?></h4>
+                    </div>
 				  <div class="modal-body">
 					<?php
 						$frontend = new Frontend;
