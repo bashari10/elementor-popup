@@ -95,6 +95,46 @@ class ElementorPopup extends Widget_Base {
 		);
         
 		$this->end_controls_section();
+        
+
+       	$this->start_controls_section(
+			'section_close_button',
+			[
+				'label' => __( 'Close Button', 'lm-popup' ),
+			]
+		);
+        
+        $this->add_control(
+			'Close Button',
+			[
+				'label' => __( 'Show Close Button', 'lm-popup' ),
+				'type' => Controls_Manager::SWITCHER,
+				'label_off' => __( 'Hide', 'lm-popup' ),
+				'label_on' => __( 'Show', 'lm-popup' ),
+				'default' => 'yes',
+            
+			
+            'selectors' => [
+					'{{WRAPPER}} button.close' => 'display: inherit;',
+                ],
+            ]
+		);
+        
+        $this->add_control(
+			'button_close_text_color',
+			[
+				'label' => __( 'Button Color', 'lm-popup' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} button.close' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+        
+		$this->end_controls_section(); 
+        
 		$this->start_controls_section(
 			'section_button',
 			[
@@ -337,10 +377,6 @@ class ElementorPopup extends Widget_Base {
 		);
 		$this->end_controls_section();
         
-        
-        /****************************************
-        *********** ADD MODAL CONTROLS **********
-        ****************************************/
      $this->start_controls_section(
 			'modalstyle',
 			[
@@ -470,7 +506,6 @@ class ElementorPopup extends Widget_Base {
 
 		$this->end_controls_section();
         
-        /* END NEW MODAL CONTROLS */
         
         
 	}

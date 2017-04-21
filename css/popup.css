@@ -4,14 +4,6 @@
 	  padding: 0 !important;
 	}
 
-	/*.modal:before {
-	  content: '';
-	  display: inline-block;
-	  height: 100%;
-	  vertical-align: middle;
-	  margin-right: -4px;
-	}*/
-
 	.modal-dialog {
 	  display: inline-block;
 	  vertical-align: middle;
@@ -32,10 +24,6 @@
 .modal-body {
     padding: 0px !important;
 }
-
-/*.modal,.modal:before, .modal-dialog, .model-body {
-  z-index: 99999 !important;
-}*/
 
 body{padding:0 !important}
 

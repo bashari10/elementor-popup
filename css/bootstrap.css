@@ -4,6 +4,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+
 .fade {
   opacity: 0;
   -webkit-transition: opacity .15s linear;
@@ -30,25 +32,32 @@
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
-  filter: alpha(opacity=20);
-  opacity: .2;
 }
 .close:hover,
 .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
-  filter: alpha(opacity=50);
+
+}
+button {
+    background-color: transparent !important;
+}
+
+button.close:hover {
+    filter: alpha(opacity=50);
   opacity: .5;
 }
+
+
 button.close {
   -webkit-appearance: none;
   padding: 5px;
   cursor: pointer;
-  background: transparent;
   border: 0;
     position: inherit;
     z-index: 999999999;
+    display: none;
 }
 .modal-open {
   overflow: hidden;
