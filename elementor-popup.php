@@ -39,8 +39,12 @@ add_action( 'plugins_loaded', function() {
 
 add_action( 'wp_enqueue_scripts', 'elementor_popup_register_popup_style' );
 function elementor_popup_register_popup_style() {
-	wp_enqueue_style( 'bootstrap', plugin_dir_url( __FILE__ ) . 'css/bootstrap.css' );
-	wp_enqueue_style( 'lm-popup', plugin_dir_url( __FILE__ ) . 'css/popup.css', array( 'bootstrap' ) );
+	if( ( ! wp_style_is( 'bootstrap', 'enqueued' ) ) && ( ! wp_style_is( 'bootstrap', 'done' ) ) ) {
+		wp_enqueue_style( 'bootstrap-modal', plugin_dir_url( __FILE__ ) . 'css/bootstrap.css' );
+		wp_enqueue_style( 'lm-popup', plugin_dir_url( __FILE__ ) . 'css/popup.css', array( 'bootstrap-modal' ) );
+	} else {
+		wp_enqueue_style( 'lm-popup', plugin_dir_url( __FILE__ ) . 'css/popup.css', array( 'bootstrap' ) );
+	}
 	
 	if ( is_rtl() ) {
 		wp_enqueue_style(
@@ -50,8 +54,13 @@ function elementor_popup_register_popup_style() {
 		);
 	}
 	
-	wp_enqueue_script( 'bootstrap', plugin_dir_url( __FILE__ ) . 'js/bootstrap.js', array( 'jquery' ), null, true );
-	wp_enqueue_script( 'lm-popup-js', plugin_dir_url( __FILE__ ) . 'js/popup.js', array( 'jquery', 'bootstrap' ), null, true );
+	if( ( ! wp_script_is( 'bootstrap', 'enqueued' ) ) && ( ! wp_script_is( 'bootstrap', 'done' ) ) ) {
+		wp_enqueue_script( 'bootstrap-modal', plugin_dir_url( __FILE__ ) . 'js/bootstrap.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'lm-popup-js', plugin_dir_url( __FILE__ ) . 'js/popup.js', array( 'jquery', 'bootstrap-modal' ), null, true );
+	} else {
+		wp_enqueue_script( 'lm-popup-js', plugin_dir_url( __FILE__ ) . 'js/popup.js', array( 'jquery', 'bootstrap' ), null, true );
+	}
+	
 }
 
 /* create new custom post type named popup */
