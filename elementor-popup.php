@@ -31,14 +31,14 @@ add_action( 'plugins_loaded', function() {
 	}
 
 	// Require the main plugin file
-	require( __DIR__ . '/plugin.php' );
+	require_once( __DIR__ . '/plugin.php' );
 } );
 
 
 
 
-add_action( 'wp_enqueue_scripts', 'register_popup_style' );
-function register_popup_style() {
+add_action( 'wp_enqueue_scripts', 'elementor_popup_register_popup_style' );
+function elementor_popup_register_popup_style() {
 	wp_enqueue_style( 'bootstrap', plugin_dir_url( __FILE__ ) . 'css/bootstrap.css' );
 	wp_enqueue_style( 'lm-popup', plugin_dir_url( __FILE__ ) . 'css/popup.css', array( 'bootstrap' ) );
 	
@@ -55,9 +55,9 @@ function register_popup_style() {
 }
 
 /* create new custom post type named popup */
-add_action( 'init', 'create_popup_post_type' );
+add_action( 'init', 'elementor_popup_create_popup_post_type' );
 
-function create_popup_post_type() {
+function elementor_popup_create_popup_post_type() {
   register_post_type( 'popup',
     array(
         'labels' => array(
